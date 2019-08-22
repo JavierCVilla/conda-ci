@@ -16,6 +16,22 @@ yum install -y redhat-lsb-core
 . /opt/conda/etc/profile.d/conda.sh
 conda activate base
 
+# Install base requirements
 conda install --yes --quiet conda-build make git
-git clone http://github.com/bluehood/root-feedstock
+
+# Work on /root directory
+cd ~
+
+# Conda-build custom recipe for clang
+git clone -b root-ci https://github.com/JavierCVilla/clangdev-feedstock.git
+conda build -c conda-forge clangdev-feedstock --variants "{'clang_variant': ['master']}"
+
+# Conda build custom recipe for cling
+# Specify the local channel (-c local) to pick the local installation of clang
+git clone -b root-ci https://github.com/javiercvilla/cling-feedstock
+conda build -c local -c conda-forge cling-feedstock
+
+# Conda build root master
+export ROOT_JENKINS_GIT_REV=master
+git clone http://github.com/javiercvilla/root-feedstock
 conda build -c conda-forge root-feedstock/recipe
