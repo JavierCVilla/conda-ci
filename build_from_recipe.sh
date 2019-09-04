@@ -34,4 +34,4 @@ conda build -c local -c conda-forge cling-feedstock
 # Conda build root master
 export ROOT_JENKINS_GIT_REV=master
 git clone http://github.com/javiercvilla/root-feedstock
-conda build -c conda-forge root-feedstock/recipe
+conda build -c local -c conda-forge root-feedstock/recipe
