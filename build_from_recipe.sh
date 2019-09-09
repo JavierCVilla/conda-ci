@@ -24,12 +24,12 @@ cd ~
 
 # Conda-build custom recipe for clang
 git clone -b root-ci https://github.com/JavierCVilla/clangdev-feedstock.git
-conda build -c conda-forge clangdev-feedstock --variants "{'clang_variant': ['master']}"
+conda build -c conda-forge clangdev-feedstock/recipe --variants "{'clang_variant': ['master']}"
 
 # Conda build custom recipe for cling
 # Specify the local channel (-c local) to pick the local installation of clang
 git clone -b root-ci https://github.com/javiercvilla/cling-feedstock
-conda build -c local -c conda-forge cling-feedstock
+conda build -c local -c conda-forge cling-feedstock/recipe
 
 # Conda build root master
 export ROOT_JENKINS_GIT_REV=master
