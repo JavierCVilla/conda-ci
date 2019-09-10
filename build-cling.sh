@@ -4,6 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Setup conda
+. /opt/conda/etc/profile.d/conda.sh
 conda activate base
 
 # Work on /root directory
