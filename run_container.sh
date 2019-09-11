@@ -2,8 +2,8 @@
 set -x
 
 # Docker info
-IMAGE="condaforge/linux-anvil-comp7"
-CONTAINER=root-conda-test-$(date +%s)
+export IMAGE="condaforge/linux-anvil-comp7"
+export CONTAINER=root-conda-test-$(date +%s)
 
 # Create docker container
 docker run --name ${CONTAINER} -t --detach $IMAGE
